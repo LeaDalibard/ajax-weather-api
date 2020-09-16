@@ -1,6 +1,6 @@
 (() => {
     var secretkey = config.SECRET_KEY;
-    run.addEventListener("click", getWeather)
+    run.addEventListener("click", doTheThing)
 
     function getData(input) {
         return new Promise((resolve) => {
@@ -59,7 +59,15 @@
         console.log(temp_max);
     }
 
-    function getWeather() {
+    function getWeather(response){
+        let weather = [];
+        for (let i = 0; i < response.data["list"].length; i++) {
+            weather.push(response.data["list"][i]["weather"][0]["main"])
+        }
+        console.log(weather);
+    }
+
+    function doTheThing() {
         var city = document.getElementById("city").value;
         getData(city)
             .then(response => {
@@ -71,7 +79,8 @@
                 getFeels_like(response)
                 getTemp_min(response)
                 getTemp_max(response)
-                console.log(response.data["list"][0]["main"])
+                getWeather(response)
+               // console.log(response.data["list"][0]["weather"][0]["main"])
             })
 
     }
