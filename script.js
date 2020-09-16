@@ -43,6 +43,22 @@
         console.log(feels_like);
     }
 
+    function getTemp_min(response) {
+        let temp_min = [];
+        for (let i = 0; i < response.data["list"].length; i++) {
+            temp_min.push(response.data["list"][i]["main"]["temp_min"])
+        }
+        console.log(temp_min);
+    }
+
+    function getTemp_max(response) {
+        let temp_max = [];
+        for (let i = 0; i < response.data["list"].length; i++) {
+            temp_max.push(response.data["list"][i]["main"]["temp_max"])
+        }
+        console.log(temp_max);
+    }
+
     function getWeather() {
         var city = document.getElementById("city").value;
         getData(city)
@@ -53,6 +69,8 @@
                 getTimeLapses(response)
                 getTemp(response)
                 getFeels_like(response)
+                getTemp_min(response)
+                getTemp_max(response)
                 console.log(response.data["list"][0]["main"])
             })
 
