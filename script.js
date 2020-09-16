@@ -21,19 +21,49 @@
 
     function getTimeLapses(response) {
         let timeLapses = [];
+        let day1 = [];
+        let day2 = [];
+        let day3 = [];
+        let day4 = [];
+        let day5 = [];
         for (let i = 0; i < response.data["list"].length; i++) {
             timeLapses.push(response.data["list"][i]["dt_txt"])
         }
+        for (let i = 0; i < timeLapses.length; i++) {
+            let dayOne = new Date(response.data["list"][0]["dt_txt"]).getDay()
+            if (new Date(response.data["list"][i]["dt_txt"]).getDay() == dayOne) {
+                day1.push(response.data["list"][i]["dt_txt"])
+            } else if (new Date(response.data["list"][i]["dt_txt"]).getDay() == dayOne + 1) {
+                day2.push(response.data["list"][i]["dt_txt"])
+            } else if (new Date(response.data["list"][i]["dt_txt"]).getDay() == dayOne + 2) {
+                day3.push(response.data["list"][i]["dt_txt"])
+            } else if (new Date(response.data["list"][i]["dt_txt"]).getDay() == dayOne + 3) {
+                day4.push(response.data["list"][i]["dt_txt"])
+            }else  {
+                day5.push(response.data["list"][i]["dt_txt"])
+            }
+
+
+
+        }
         console.log(timeLapses);
+        console.log(day1);
+        console.log(day2);
+        console.log(day3);
+        console.log(day4);
+        console.log(day5);
     }
 
     function getTemp(response) {
         let temp = [];
+
         for (let i = 0; i < response.data["list"].length; i++) {
             temp.push(response.data["list"][i]["main"]["temp"])
         }
+
         console.log(temp);
     }
+
 
     function getFeels_like(response) {
         let feels_like = [];
@@ -59,7 +89,8 @@
         console.log(temp_max);
     }
 
-    function getWeather(response){
+
+    function getWeather(response) {
         let weather = [];
         for (let i = 0; i < response.data["list"].length; i++) {
             weather.push(response.data["list"][i]["weather"][0]["main"])
@@ -80,7 +111,7 @@
                 getTemp_min(response)
                 getTemp_max(response)
                 getWeather(response)
-               // console.log(response.data["list"][0]["weather"][0]["main"])
+                console.log(response.data["list"])
             })
 
     }
