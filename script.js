@@ -35,6 +35,14 @@
         console.log(temp);
     }
 
+    function getFeels_like(response) {
+        let feels_like = [];
+        for (let i = 0; i < response.data["list"].length; i++) {
+            feels_like.push(response.data["list"][i]["main"]["feels_like"])
+        }
+        console.log(feels_like);
+    }
+
     function getWeather() {
         var city = document.getElementById("city").value;
         getData(city)
@@ -44,6 +52,8 @@
                 //console.log(response.data["list"][0]["dt_txt"])})
                 getTimeLapses(response)
                 getTemp(response)
+                getFeels_like(response)
+                console.log(response.data["list"][0]["main"])
             })
 
     }
