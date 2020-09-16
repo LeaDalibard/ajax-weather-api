@@ -1,17 +1,23 @@
 (() => {
     var secretkey = config.SECRET_KEY;
-    run.addEventListener("click", getData)
+    run.addEventListener("click", getWeather)
 
-    function getData(){
+    function getData(input) {
+        return new Promise((resolve) => {
+                axios.get("http://api.openweathermap.org/data/2.5/forecast?q=" + input + "&units=metric&appid=" + secretkey)
+                    .then(data => {
+                        resolve(data);
+                    }, error => {
+                        alert("Type the name of a city.");
+                    });
+            }
+        )}
+
+    function getWeather() {
         var city = document.getElementById("city").value;
-        let weather;
-        axios.get("http://api.openweathermap.org/data/2.5/forecast?q="+city+"&units=metric&appid="+secretkey)
-            .then(result => {
-                weather=result.data.list[1].dt
-                console.log(weather)
-            }, error => {
-                alert("Type the name of a city.");
-            });
-
+        getData(city).then(response=>{
+            console.log(response)})
     }
+
+
 })();
