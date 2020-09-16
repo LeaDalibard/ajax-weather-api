@@ -27,6 +27,13 @@
         console.log(timeLapses);
     }
 
+    function getTemp(response) {
+        let temp = [];
+        for (let i = 0; i < response.data["list"].length; i++) {
+            temp.push(response.data["list"][i]["main"]["temp"])
+        }
+        console.log(temp);
+    }
 
     function getWeather() {
         var city = document.getElementById("city").value;
@@ -36,6 +43,7 @@
                 //console.log(response.data["list"][0]["main"])})
                 //console.log(response.data["list"][0]["dt_txt"])})
                 getTimeLapses(response)
+                getTemp(response)
             })
 
     }
