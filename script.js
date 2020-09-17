@@ -1,4 +1,5 @@
 (() => {
+    const numberDays=5;
     var secretkey = config.SECRET_KEY;
     run.addEventListener("click", doTheThing)
 
@@ -17,7 +18,7 @@
     function getDailyData(lat, lon) {
         return new Promise((resolve) => {
                 axios.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon +
-                    "&exclude=hourly,daily&appid=" + secretkey)
+                    "&exclude=miutely,hourly&appid=" + secretkey)
                     .then(data => {
                         resolve(data);
                     }, error => {
@@ -174,7 +175,11 @@
                 var lon = response.data["city"]["coord"].lon
                 getDailyData(lat, lon)
                     .then(response=>{
-                        console.log(response)})
+                        let weather=[];
+                        for (let i=0; i<numberDays; i++)
+                        {weather.push(response.data["daily"][i]["weather"][0]["main"])}
+                        console.log(weather)
+                    })
             })
 
 
