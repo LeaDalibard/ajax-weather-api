@@ -135,35 +135,40 @@
                 var lengthDayFive = getTimeLapses(response)[4].length;
                 getTemp(response);
                 var day = new Object();
-                day.temp=[];
+                day.temp = [];
                 day.temp.push(average(getTemp(response).slice(0, lengthDayOne)))
                 day.temp.push(average(getTemp(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)))
                 day.temp.push(average(getTemp(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)))
                 day.temp.push(average(getTemp(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)))
                 day.temp.push(average(getTemp(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)))
                 console.log(day.temp)
-                day.feels_like=[];
+                day.feels_like = [];
                 day.feels_like.push(average(getFeels_like(response).slice(0, lengthDayOne)))
                 day.feels_like.push(average(getFeels_like(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)))
                 day.feels_like.push(average(getFeels_like(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)))
                 day.feels_like.push(average(getFeels_like(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)))
                 day.feels_like.push(average(getFeels_like(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)))
                 console.log(day.feels_like)
-                day.temp_min=[];
+                day.temp_min = [];
                 day.temp_min.push(average(getTemp_min(response).slice(0, lengthDayOne)))
                 day.temp_min.push(average(getTemp_min(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)))
                 day.temp_min.push(average(getTemp_min(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)))
                 day.temp_min.push(average(getTemp_min(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)))
                 day.temp_min.push(average(getTemp_min(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)))
                 console.log(day.temp_min)
-                day.temp_max=[];
+                day.temp_max = [];
                 day.temp_max.push(average(getTemp_max(response).slice(0, lengthDayOne)))
                 day.temp_max.push(average(getTemp_max(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)))
                 day.temp_max.push(average(getTemp_max(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)))
                 day.temp_max.push(average(getTemp_max(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)))
                 day.temp_max.push(average(getTemp_max(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)))
                 console.log(day.temp_max)
-
+                for (let i = 0; i < day.temp.length; i++) {
+                    document.getElementById("temp-" + i).innerHTML = day.temp[i]
+                    document.getElementById("feels_like-" + i).innerHTML = day.feels_like[i]
+                    document.getElementById("temp_min-" + i).innerHTML = day.temp_min[i]
+                    document.getElementById("temp_max-" + i).innerHTML = day.temp_max[i]
+                }
             })
 
 
