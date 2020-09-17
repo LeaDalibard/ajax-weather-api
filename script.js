@@ -166,6 +166,9 @@
                 dayFive.weather = getWeather(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)
 
                 //------> making average
+                for(let i=0; i<dayOne.length; i++){
+
+                }
                 avetemp = average(dayOne.temp_max)
                 console.log(avetemp)
             })
