@@ -103,7 +103,7 @@
         for (let i = 0; i < response.data["list"].length; i++) {
             temp_max.push(response.data["list"][i]["main"]["temp_max"])
         }
-        console.log(temp_max);
+        return temp_max;
     }
 
 //---------------------- get weather
@@ -113,7 +113,7 @@
         for (let i = 0; i < response.data["list"].length; i++) {
             weather.push(response.data["list"][i]["weather"][0]["main"])
         }
-        console.log(weather);
+        return weather;
     }
 
 //---------------------- get final results
@@ -149,7 +149,12 @@
                 dayThree.temp_min = getTemp_min(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)
                 dayFour.temp_min =getTemp_min(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)
                 dayFive.temp_min = getTemp_min(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour+lengthDayFive)
-
+                dayOne.temp_max = getTemp_max(response).slice(0, lengthDayOne)
+                dayTwo.temp_max = getTemp_max(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)
+                dayThree.temp_max = getTemp_max(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)
+                dayFour.temp_max =getTemp_max(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)
+                dayFive.temp_max =getTemp_max(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour+lengthDayFive)
+                console.log(dayFour.temp_max)
             })
 
 
