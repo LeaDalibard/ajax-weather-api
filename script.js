@@ -26,24 +26,28 @@
         let day3 = [];
         let day4 = [];
         let day5 = [];
+        var dayFrom =new Array(5);
+       dayFrom[0] = new Date(response.data["list"][0]["dt_txt"]).getDay();
+        const numberDays=7;
+        for (let j=0;j<numberDays; j++){
+            if (dayFrom[j]<numberDays-1){dayFrom[j+1]=dayFrom[j]+1}
+            else (dayFrom[j+1]=0)
+                }
         for (let i = 0; i < response.data["list"].length; i++) {
             timeLapses.push(response.data["list"][i]["dt_txt"])
         }
         for (let i = 0; i < timeLapses.length; i++) {
-            let dayOne = new Date(response.data["list"][0]["dt_txt"]).getDay()
-            if (new Date(response.data["list"][i]["dt_txt"]).getDay() == dayOne) {
+            if (new Date(response.data["list"][i]["dt_txt"]).getDay() == dayFrom[0]) {
                 day1.push(response.data["list"][i]["dt_txt"])
-            } else if (new Date(response.data["list"][i]["dt_txt"]).getDay() == dayOne + 1) {
+            } else if (new Date(response.data["list"][i]["dt_txt"]).getDay() ==  dayFrom[1]) {
                 day2.push(response.data["list"][i]["dt_txt"])
-            } else if (new Date(response.data["list"][i]["dt_txt"]).getDay() == dayOne + 2) {
+            } else if (new Date(response.data["list"][i]["dt_txt"]).getDay() ==  dayFrom[2]) {
                 day3.push(response.data["list"][i]["dt_txt"])
-            } else if (new Date(response.data["list"][i]["dt_txt"]).getDay() == dayOne + 3) {
+            } else if (new Date(response.data["list"][i]["dt_txt"]).getDay() ==  dayFrom[3]) {
                 day4.push(response.data["list"][i]["dt_txt"])
             }else  {
                 day5.push(response.data["list"][i]["dt_txt"])
             }
-
-
 
         }
         console.log(timeLapses);
@@ -52,6 +56,7 @@
         console.log(day3);
         console.log(day4);
         console.log(day5);
+        console.log(dayFrom);
     }
 
     function getTemp(response) {
