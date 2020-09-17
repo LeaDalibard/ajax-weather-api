@@ -154,7 +154,12 @@
                 dayThree.temp_max = getTemp_max(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)
                 dayFour.temp_max =getTemp_max(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)
                 dayFive.temp_max =getTemp_max(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour+lengthDayFive)
-                console.log(dayFour.temp_max)
+                dayOne.weather = getWeather(response).slice(0, lengthDayOne)
+                dayTwo.weather = getWeather(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)
+                dayThree.weather = getWeather(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)
+                dayFour.weather =getWeather(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)
+                dayFive.weather =getWeather(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour+lengthDayFive)
+                console.log(dayFour.weather)
             })
 
 
