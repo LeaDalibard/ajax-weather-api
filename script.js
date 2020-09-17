@@ -177,7 +177,9 @@
                     .then(response=>{
                         let weather=[];
                         for (let i=0; i<numberDays; i++)
-                        {weather.push(response.data["daily"][i]["weather"][0]["main"])}
+                        {weather.push(response.data["daily"][i]["weather"][0]["main"])
+                            document.getElementById("weather-" + i).innerHTML = weather[i]
+                        }
                         console.log(weather)
                     })
             })
