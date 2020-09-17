@@ -14,6 +14,18 @@
         )
     }
 
+    function getDailyData(lat, lon) {
+        return new Promise((resolve) => {
+                axios.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon +
+                    "&exclude=hourly,daily&appid=" + secretkey)
+                    .then(data => {
+                        resolve(data);
+                    }, error => {
+                        alert("error");
+                    });
+            }
+        )
+    }
 
 
     //---------------------- get TimeLapses and distributed them in 5 days
@@ -52,7 +64,6 @@
         return [day1, day2, day3, day4, day5];
 
     }
-
 
 
     //---------------------- get Temperature global
@@ -159,8 +170,11 @@
                     document.getElementById("temp_max-" + i).innerHTML = day.temp_max[i]
                 }
                 console.log(response.data["city"]["coord"])
-               var lat=response.data["city"]["coord"].lat
-                var lon=response.data["city"]["coord"].lon
+                var lat = response.data["city"]["coord"].lat
+                var lon = response.data["city"]["coord"].lon
+                getDailyData(lat, lon)
+                    .then(response=>{
+                        console.log(response)})
             })
 
 
