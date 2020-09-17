@@ -15,6 +15,7 @@
     }
 
 
+
     //---------------------- get TimeLapses and distributed them in 5 days
 
     function getTimeLapses(response) {
@@ -49,21 +50,9 @@
             }
         }
         return [day1, day2, day3, day4, day5];
-        console.log(timeLapses);
 
     }
 
-    //---------------------- Distributed data per day
-
-    function distribute() {
-        let promiseTime = Promise.resolve(getTimeLapses(response))
-        promiseTime.then(result => {
-            let promiseTemp = Promise.resolve(getTemp(response))
-            promiseTemp.then(temp => {
-                let promiseTemp = Promise.resolve(getTemp(response))
-            })
-        })
-    }
 
 
     //---------------------- get Temperature global
@@ -169,6 +158,9 @@
                     document.getElementById("temp_min-" + i).innerHTML = day.temp_min[i]
                     document.getElementById("temp_max-" + i).innerHTML = day.temp_max[i]
                 }
+                console.log(response.data["city"]["coord"])
+               var lat=response.data["city"]["coord"].lat
+                var lon=response.data["city"]["coord"].lon
             })
 
 
