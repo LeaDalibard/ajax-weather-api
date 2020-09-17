@@ -118,7 +118,7 @@
 
     function average(arr) {
         arrSum = arr.reduce((a, b) => a + b, 0);
-        return (arrSum/arr.length).toFixed(1)
+        return (arrSum / arr.length).toFixed(1)
     }
 
 //---------------------- get final results
@@ -134,41 +134,35 @@
                 var lengthDayFour = getTimeLapses(response)[3].length;
                 var lengthDayFive = getTimeLapses(response)[4].length;
                 getTemp(response);
-                var dayOne = new Object();
-                var dayTwo = new Object();
-                var dayThree = new Object();
-                var dayFour = new Object();
-                var dayFive = new Object();
-                dayOne.temp = average(getTemp(response).slice(0, lengthDayOne))
-                dayTwo.temp = average(getTemp(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo))
-                dayThree.temp =average(getTemp(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree))
-                dayFour.temp = average(getTemp(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour))
-                dayFive.temp = average(getTemp(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive))
-                dayOne.feels_like = average(getFeels_like(response).slice(0, lengthDayOne))
-                dayTwo.feels_like = average(getFeels_like(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo))
-                dayThree.feels_like = average(getFeels_like(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree))
-                dayFour.feels_like = average(getFeels_like(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour))
-                dayFive.feels_like = average(getFeels_like(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive))
-                dayOne.temp_min = average(getTemp_min(response).slice(0, lengthDayOne))
-                dayTwo.temp_min =average(getTemp_min(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo))
-                dayThree.temp_min = average(getTemp_min(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree))
-                dayFour.temp_min = average(getTemp_min(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour))
-                dayFive.temp_min = average(getTemp_min(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive))
-                dayOne.temp_max = average(getTemp_max(response).slice(0, lengthDayOne))
-                dayTwo.temp_max = average(getTemp_max(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo))
-                dayThree.temp_max =average(getTemp_max(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree))
-                dayFour.temp_max =average(getTemp_max(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour))
-                dayFive.temp_max = average(getTemp_max(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive))
-                console.log(dayOne.temp_max)
-                console.log(dayTwo.temp_max)
-                console.log(dayThree.temp_max)
-                console.log(dayFour.temp_max)
-                console.log(dayFive.temp_max)
-                dayOne.weather = getWeather(response).slice(0, lengthDayOne)
-                dayTwo.weather = getWeather(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)
-                dayThree.weather = getWeather(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)
-                dayFour.weather = getWeather(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)
-                dayFive.weather = getWeather(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)
+                var day = new Object();
+                day.temp=[];
+                day.temp.push(average(getTemp(response).slice(0, lengthDayOne)))
+                day.temp.push(average(getTemp(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)))
+                day.temp.push(average(getTemp(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)))
+                day.temp.push(average(getTemp(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)))
+                day.temp.push(average(getTemp(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)))
+                console.log(day.temp)
+                day.feels_like=[];
+                day.feels_like.push(average(getFeels_like(response).slice(0, lengthDayOne)))
+                day.feels_like.push(average(getFeels_like(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)))
+                day.feels_like.push(average(getFeels_like(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)))
+                day.feels_like.push(average(getFeels_like(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)))
+                day.feels_like.push(average(getFeels_like(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)))
+                console.log(day.feels_like)
+                day.temp_min=[];
+                day.temp_min.push(average(getTemp_min(response).slice(0, lengthDayOne)))
+                day.temp_min.push(average(getTemp_min(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)))
+                day.temp_min.push(average(getTemp_min(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)))
+                day.temp_min.push(average(getTemp_min(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)))
+                day.temp_min.push(average(getTemp_min(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)))
+                console.log(day.temp_min)
+                day.temp_max=[];
+                day.temp_max.push(average(getTemp_max(response).slice(0, lengthDayOne)))
+                day.temp_max.push(average(getTemp_max(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)))
+                day.temp_max.push(average(getTemp_max(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)))
+                day.temp_max.push(average(getTemp_max(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)))
+                day.temp_max.push(average(getTemp_max(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)))
+                console.log(day.temp_max)
 
             })
 
@@ -178,3 +172,10 @@
 
 })();
 
+/*
+               dayOne.weather = getWeather(response).slice(0, lengthDayOne)
+               dayTwo.weather = getWeather(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)
+               dayThree.weather = getWeather(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)
+               dayFour.weather = getWeather(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)
+               dayFive.weather = getWeather(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)
+*/
