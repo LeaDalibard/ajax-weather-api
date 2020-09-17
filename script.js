@@ -83,7 +83,7 @@
         for (let i = 0; i < response.data["list"].length; i++) {
             feels_like.push(response.data["list"][i]["main"]["feels_like"])
         }
-        console.log(feels_like);
+        return feels_like;
     }
 
     //---------------------- get temperature minimal
@@ -139,6 +139,12 @@
                 dayThree.temp = getTemp(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)
                 dayFour.temp = getTemp(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)
                 dayFive.temp = getTemp(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour+lengthDayFive)
+                dayOne.feels_like = getFeels_like(response).slice(0, lengthDayOne)
+                dayTwo.feels_like = getFeels_like(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)
+                dayThree.feels_like = getFeels_like(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)
+                dayFour.feels_like = getFeels_like(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)
+                dayFive.feels_like = getFeels_like(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour+lengthDayFive)
+
 
 
             })
