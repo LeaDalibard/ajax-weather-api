@@ -3,15 +3,6 @@
     const daysWeek=7;
     var d = new Date();
     var date = d.getDate();
-    const days = [
-        'monday',
-        'tuesday',
-        'wednesday',
-        'thursday',
-        'friday',
-        'saturday',
-        'sunday'
-    ]
 
 
     var secretkey = config.SECRET_KEY;
@@ -32,7 +23,7 @@
     function getDailyData(lat, lon) {
         return new Promise((resolve) => {
                 axios.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon +
-                    "&exclude=miutely,hourly&appid=" + secretkey)
+                    "&exclude=miutely,hourly&units=metric&appid=" + secretkey)
                     .then(data => {
                         resolve(data);
                     }, error => {
@@ -54,8 +45,8 @@
         let day5 = [];
         var dayFrom = new Array(5);
         dayFrom[0] = new Date(response.data["list"][0]["dt_txt"]).getDay();
-        for (let j = 0; j <daysWeek-1; j++) {
-            if (dayFrom[j] < daysWeek) {
+        for (let j = 0; j < numberDays; j++) {
+            if (dayFrom[j] < daysWeek-1) {
                 dayFrom[j + 1] = dayFrom[j] + 1
             } else (dayFrom[j + 1] = 0)
         }
@@ -66,12 +57,11 @@
             'Wednesday',
             'Thursday',
             'Friday',
-            'Saturday'
+            'Saturday',
         ]
-       for (let j = 0; j < numberDays; j++) {
+       for (let j = 0; j < dayFrom.length-1; j++) {
         document.getElementById("day-"+j).innerHTML=daysName[dayFrom[j]]
         }
-        console.log(dayFrom)
         for (let i = 0; i < response.data["list"].length; i++) {
             timeLapses.push(response.data["list"][i]["dt_txt"])
         }
@@ -89,8 +79,6 @@
             }
         }
         return [day1, day2, day3, day4, day5];
-        console.log(day1, day2, day3, day4, day5);
-        console.log( dayFrom[0])
     }
 
 
@@ -202,6 +190,7 @@
                 var lon = response.data["city"]["coord"].lon
                 getDailyData(lat, lon)
                     .then(response=>{
+                        console.log(response.data["daily"][0]["temp"]["day"]);
                         let weather=[];
                         for (let i=0; i<numberDays; i++)
                         {weather.push(response.data["daily"][i]["weather"][0]["main"])
