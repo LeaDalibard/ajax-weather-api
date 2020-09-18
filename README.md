@@ -19,14 +19,14 @@
 
 - [X] create an account on this [platform](https://home.openweathermap.org/.)
 - [X] You are going to have to generate a key.
-- [ ] create a home page where you ask the visitor to enter the city of his choice.
+- [X] create a home page where you ask the visitor to enter the city of his choice.
 
 ### Sprint 2
 
-- [ ] Get the weather data using [axios](https://github.com/axios/axios) or another javascript AJAX enabled library or use the native JS fetch() method
-- [ ] Optional: Use a cdn link to link axios to your project.
-- [ ] Display the weather for the next 5 days. Show the averages per day.
-- [ ] Apply styling to your project using media queries to make it responsive.
+- [X] Get the weather data using [axios](https://github.com/axios/axios) or another javascript AJAX enabled library or use the native JS fetch() method
+- [X] Optional: Use a cdn link to link axios to your project.
+- [X] Display the weather for the next 5 days. Show the averages per day.
+- [X] Apply styling to your project using media queries to make it responsive.
 
 ## Extra challenges
 
