@@ -1,5 +1,19 @@
 (() => {
     const numberDays=5;
+    const daysWeek=7;
+    var d = new Date();
+    var date = d.getDate();
+    const days = [
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
+        'sunday'
+    ]
+
+
     var secretkey = config.SECRET_KEY;
     run.addEventListener("click", doTheThing)
 
@@ -40,12 +54,24 @@
         let day5 = [];
         var dayFrom = new Array(5);
         dayFrom[0] = new Date(response.data["list"][0]["dt_txt"]).getDay();
-        const numberDays = 7;
-        for (let j = 0; j < numberDays; j++) {
-            if (dayFrom[j] < numberDays - 1) {
+        for (let j = 0; j <daysWeek-1; j++) {
+            if (dayFrom[j] < daysWeek) {
                 dayFrom[j + 1] = dayFrom[j] + 1
             } else (dayFrom[j + 1] = 0)
         }
+        const daysName = [
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday'
+        ]
+       for (let j = 0; j < numberDays; j++) {
+        document.getElementById("day-"+j).innerHTML=daysName[dayFrom[j]]
+        }
+        console.log(dayFrom)
         for (let i = 0; i < response.data["list"].length; i++) {
             timeLapses.push(response.data["list"][i]["dt_txt"])
         }
@@ -63,7 +89,8 @@
             }
         }
         return [day1, day2, day3, day4, day5];
-
+        console.log(day1, day2, day3, day4, day5);
+        console.log( dayFrom[0])
     }
 
 
@@ -180,7 +207,6 @@
                         {weather.push(response.data["daily"][i]["weather"][0]["main"])
                             document.getElementById("weather-" + i).innerHTML = weather[i]
                         }
-                        console.log(weather)
                     })
             })
 
@@ -189,11 +215,3 @@
 
 
 })();
-
-/*
-               dayOne.weather = getWeather(response).slice(0, lengthDayOne)
-               dayTwo.weather = getWeather(response).slice(lengthDayOne, lengthDayOne + lengthDayTwo)
-               dayThree.weather = getWeather(response).slice(lengthDayOne + lengthDayTwo, lengthDayOne + lengthDayTwo + lengthDayThree)
-               dayFour.weather = getWeather(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour)
-               dayFive.weather = getWeather(response).slice(lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour, lengthDayOne + lengthDayTwo + lengthDayThree + lengthDayFour + lengthDayFive)
-*/
