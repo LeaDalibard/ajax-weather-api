@@ -5,19 +5,22 @@
     var date = d.getDate();
 
 
-    var secretkey = config.SECRET_KEY;
+    var myKey = config.SECRET_KEY;
 
-    city.addEventListener("keyup", function (e) {
-        if (e.keyCode === 13) {
-           doTheThing();
+    var input = document.getElementById("city");
+    input.addEventListener("keypress", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("run").click();
         }
-    })
+    });
+
     run.addEventListener("click", doTheThing)
 
 
     function getData(input) {
         return new Promise((resolve) => {
-                axios.get("http://api.openweathermap.org/data/2.5/forecast?q=" + input + "&units=metric&appid=" + secretkey)
+                axios.get("http://api.openweathermap.org/data/2.5/forecast?q=" + input + "&units=metric&appid=" + myKey)
                     .then(data => {
                         resolve(data);
                     }, error => {
@@ -30,7 +33,7 @@
     function getDailyData(lat, lon) {
         return new Promise((resolve) => {
                 axios.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon +
-                    "&exclude=miutely,hourly&units=metric&appid=" + secretkey)
+                    "&exclude=miutely,hourly&units=metric&appid=" + myKey)
                     .then(data => {
                         resolve(data);
                     }, error => {
@@ -134,7 +137,7 @@
                             temp_max.push(response.data["daily"][i]["temp"]["max"])
                             document.getElementById("temp_max-" + i).innerHTML = temp_max[i]
                         }
-
+                        document.querySelector("body").style.backgroundImage = 'url(https://source.unsplash.com/1600x900/?'+city+')';
                     })
             })
 
