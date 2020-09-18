@@ -1,12 +1,19 @@
 (() => {
-    const numberDays=5;
-    const daysWeek=7;
+    const numberDays = 5;
+    const daysWeek = 7;
     var d = new Date();
     var date = d.getDate();
 
 
     var secretkey = config.SECRET_KEY;
+
+    city.addEventListener("keyup", function (e) {
+        if (e.keyCode === 13) {
+           doTheThing();
+        }
+    })
     run.addEventListener("click", doTheThing)
+
 
     function getData(input) {
         return new Promise((resolve) => {
@@ -46,7 +53,7 @@
         var dayFrom = new Array(5);
         dayFrom[0] = new Date(response.data["list"][0]["dt_txt"]).getDay();
         for (let j = 0; j < numberDays; j++) {
-            if (dayFrom[j] < daysWeek-1) {
+            if (dayFrom[j] < daysWeek - 1) {
                 dayFrom[j + 1] = dayFrom[j] + 1
             } else (dayFrom[j + 1] = 0)
         }
@@ -59,8 +66,8 @@
             'Friday',
             'Saturday',
         ]
-       for (let j = 0; j < dayFrom.length-1; j++) {
-        document.getElementById("day-"+j).innerHTML=daysName[dayFrom[j]]
+        for (let j = 0; j < dayFrom.length - 1; j++) {
+            document.getElementById("day-" + j).innerHTML = daysName[dayFrom[j]]
         }
         for (let i = 0; i < response.data["list"].length; i++) {
             timeLapses.push(response.data["list"][i]["dt_txt"])
@@ -96,35 +103,35 @@
                 var lat = response.data["city"]["coord"].lat
                 var lon = response.data["city"]["coord"].lon
                 getDailyData(lat, lon)
-                    .then(response=>{
+                    .then(response => {
                         console.log(response.data["daily"]);
-                        let weather=[];
-                        let icons=[];
-                        for (let i=0; i<numberDays; i++)
-                        {weather.push(response.data["daily"][i]["weather"][0]["main"])
+                        let weather = [];
+                        let icons = [];
+                        for (let i = 0; i < numberDays; i++) {
+                            weather.push(response.data["daily"][i]["weather"][0]["main"])
                             icons.push(response.data["daily"][i]["weather"][0]["icon"])
                             document.getElementById("weather-" + i).innerHTML = weather[i]
-                            document.getElementById("icons-"+ i).src="https://openweathermap.org/img/wn/"+icons[i]+"@2x.png"
+                            document.getElementById("icons-" + i).src = "https://openweathermap.org/img/wn/" + icons[i] + "@2x.png"
                         }
 
-                        let temp=[];
-                        for (let i=0; i<numberDays; i++)
-                        {temp.push(response.data["daily"][i]["temp"]["day"])
+                        let temp = [];
+                        for (let i = 0; i < numberDays; i++) {
+                            temp.push(response.data["daily"][i]["temp"]["day"])
                             document.getElementById("temp-" + i).innerHTML = temp[i]
                         }
-                        let feels_like=[];
-                        for (let i=0; i<numberDays; i++)
-                        {feels_like.push(response.data["daily"][i]["feels_like"]["day"])
+                        let feels_like = [];
+                        for (let i = 0; i < numberDays; i++) {
+                            feels_like.push(response.data["daily"][i]["feels_like"]["day"])
                             document.getElementById("feels_like-" + i).innerHTML = feels_like[i]
                         }
-                        let temp_min=[];
-                        for (let i=0; i<numberDays; i++)
-                        {temp_min.push(response.data["daily"][i]["temp"]["min"])
+                        let temp_min = [];
+                        for (let i = 0; i < numberDays; i++) {
+                            temp_min.push(response.data["daily"][i]["temp"]["min"])
                             document.getElementById("temp_min-" + i).innerHTML = temp_min[i]
                         }
-                        let temp_max=[];
-                        for (let i=0; i<numberDays; i++)
-                        {temp_max.push(response.data["daily"][i]["temp"]["max"])
+                        let temp_max = [];
+                        for (let i = 0; i < numberDays; i++) {
+                            temp_max.push(response.data["daily"][i]["temp"]["max"])
                             document.getElementById("temp_max-" + i).innerHTML = temp_max[i]
                         }
 
