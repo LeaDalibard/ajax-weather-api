@@ -25,7 +25,24 @@ h1,h2{
 }
 
 @media only screen and (max-width: 300px) {
+    div.small {
+        display: inline;
+        float: left;
+        margin: 15px;
+        background-color: #DFE9F2;
+        color: #444444;
+        padding: 15px;
+        word-wrap: break-word;
+    }
+    div.main {
+        float: left;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: #DFE9F2;
+        color: #444444;
+        padding: 15px;
 
+    }
 }
 
 @media only screen and (min-width: 300px) and (max-width: 768px) {
@@ -38,7 +55,7 @@ h1,h2{
         float: left;
         width: 45%;
         margin: 15px;
-        background-color: #F2F2F2;
+        background-color: #DFE9F2;
         color: #444444;
         padding: 15px;
         word-wrap: break-word;
@@ -48,7 +65,7 @@ h1,h2{
         width: 100%;
         margin-top: 20px;
         margin-bottom: 20px;
-        background-color: #F2F2F2;
+        background-color: #DFE9F2;
         color: #444444;
         padding: 15px;
 
@@ -84,7 +101,7 @@ h1,h2{
     }
     div.medium {
         width: 24%;
-        background-color: #F2F2F2;
+        background-color: #DFE9F2;
         color: #444444;
         padding: 15px;
     }
@@ -93,7 +110,7 @@ h1,h2{
         width: 100%;
         margin-top: 20px;
         margin-bottom: 20px;
-        background-color: #F2F2F2;
+        background-color: #DFE9F2;
         color: #444444;
         padding: 15px;
 
