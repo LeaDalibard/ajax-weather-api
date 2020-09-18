@@ -14,6 +14,50 @@ body {
 }
 
 @media only screen and (min-width: 300px) and (max-width: 768px) {
+    div.second{
+        width: 100%;
+        overflow: auto;
+    }
+    div.small {
+        display: inline;
+        float: left;
+        width: 45%;
+        margin: 15px;
+        background-color: #F2F2F2;
+        padding: 15px;
+        word-wrap: break-word;
+    }
+    div.main {
+        float: left;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: #F2F2F2;
+        padding: 15px;
+
+    }
+    .main div {
+        page-break-inside: avoid;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 1.6em;
+        margin-top: 1.6em;
+        max-width: 100%;
+        overflow: auto;
+        padding: 1em 1.5em;
+        display: block;
+        word-wrap: break-word
+    }
+    .main div.left {
+        float: left;
+        width: 45%;
+        display: inline;
+    }
+    .main div.right {
+        float: right;
+        width: 45%;
+        display: inline;
+    }
 
 }
 
@@ -22,7 +66,7 @@ body {
         width: 100%;
     }
     div.medium {
-        width: 21%;
+        width: 24%;
         background-color: #F2F2F2;
         padding: 15px;
     }
@@ -49,12 +93,12 @@ body {
     }
     .main div.left {
         float: left;
-        width: 40%;
+        width: 45%;
         display: inline;
     }
     .main div.right {
         float: right;
-        width: 40%;
+        width: 45%;
         display: inline;
     }
 
