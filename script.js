@@ -82,63 +82,6 @@
     }
 
 
-    //---------------------- get Temperature global
-
-    function getTemp(response) {
-        let temp = [];
-        for (let i = 0; i < response.data["list"].length; i++) {
-            temp.push(response.data["list"][i]["main"]["temp"])
-        }
-        return temp
-    }
-
-    //---------------------- get Feels like
-
-    function getFeels_like(response) {
-        let feels_like = [];
-        for (let i = 0; i < response.data["list"].length; i++) {
-            feels_like.push(response.data["list"][i]["main"]["feels_like"])
-        }
-        return feels_like;
-    }
-
-    //---------------------- get temperature minimal
-
-    function getTemp_min(response) {
-        let temp_min = [];
-        for (let i = 0; i < response.data["list"].length; i++) {
-            temp_min.push(response.data["list"][i]["main"]["temp_min"])
-        }
-        return temp_min;
-    }
-
-    //---------------------- get temperature maximal
-
-    function getTemp_max(response) {
-        let temp_max = [];
-        for (let i = 0; i < response.data["list"].length; i++) {
-            temp_max.push(response.data["list"][i]["main"]["temp_max"])
-        }
-        return temp_max;
-    }
-
-//---------------------- get weather
-    let weather = [];
-
-    function getWeather(response) {
-        for (let i = 0; i < response.data["list"].length; i++) {
-            weather.push(response.data["list"][i]["weather"][0]["main"])
-        }
-        return weather;
-    }
-
-    function average(arr) {
-        arrSum = arr.reduce((a, b) => a + b, 0);
-        return (arrSum / arr.length).toFixed(1)
-    }
-
-//---------------------- get final results
-
     function doTheThing() {
         var city = document.getElementById("city").value;
         getData(city)
@@ -149,7 +92,6 @@
                 var lengthDayThree = getTimeLapses(response)[2].length;
                 var lengthDayFour = getTimeLapses(response)[3].length;
                 var lengthDayFive = getTimeLapses(response)[4].length;
-                getTemp(response);
                 var day = new Object();
                 var lat = response.data["city"]["coord"].lat
                 var lon = response.data["city"]["coord"].lon
@@ -157,10 +99,14 @@
                     .then(response=>{
                         console.log(response.data["daily"]);
                         let weather=[];
+                        let icons=[];
                         for (let i=0; i<numberDays; i++)
                         {weather.push(response.data["daily"][i]["weather"][0]["main"])
+                            icons.push(response.data["daily"][i]["weather"][0]["icon"])
                             document.getElementById("weather-" + i).innerHTML = weather[i]
+                            document.getElementById("icons-"+ i).src="https://openweathermap.org/img/wn/"+icons[i]+"@2x.png"
                         }
+
                         let temp=[];
                         for (let i=0; i<numberDays; i++)
                         {temp.push(response.data["daily"][i]["temp"]["day"])
