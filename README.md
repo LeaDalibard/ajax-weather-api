@@ -7,6 +7,8 @@
 * Delivery: Github page (published)
 * Team: Solo
 
+* In order to use the code, it's necessary to generate a key on this [platform](https://home.openweathermap.org/.) and replace the value of "myKey" in the code by this key.
+
 ## Learning Objectives
 
 * A typical AJAX flow: send asynchronous requests to a remoted server and process the results;
