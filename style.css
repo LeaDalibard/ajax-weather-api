@@ -1,6 +1,6 @@
 body {
     font: 100% "Avenir", SansSerif;
-    background-color: #b9b9e0;
+    background-color: #3C5FA6;
     margin: 20px;
     padding: 20px;
     background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
@@ -18,11 +18,44 @@ body {
 }
 
 @media only screen and (min-width: 768px) {
-    div.medium {
-        float: left;
-        display: inline;
-        width: 30%;
-        margin: 15px;
-        background-color: whitesmoke;
+    div.second{
+        width: 100%;
     }
+    div.medium {
+        width: 21%;
+        background-color: #F2F2F2;
+        padding: 15px;
+    }
+    div.main {
+        float: left;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: #F2F2F2;
+        padding: 15px;
+
+    }
+    .main div {
+        page-break-inside: avoid;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 1.6em;
+        margin-top: 1.6em;
+        max-width: 100%;
+        overflow: auto;
+        padding: 1em 1.5em;
+        display: block;
+        word-wrap: break-word
+    }
+    .main div.left {
+        float: left;
+        width: 40%;
+        display: inline;
+    }
+    .main div.right {
+        float: right;
+        width: 40%;
+        display: inline;
+    }
+
 }
