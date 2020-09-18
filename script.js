@@ -137,7 +137,9 @@
                             temp_max.push(response.data["daily"][i]["temp"]["max"])
                             document.getElementById("temp_max-" + i).innerHTML = temp_max[i]
                         }
-                        document.querySelector("body").style.backgroundImage = 'url(https://source.unsplash.com/1600x900/?'+city+')';
+                        var cityname= city.toLowerCase().replace(/\s/g, '')
+                        console.log(cityname)
+                        document.querySelector("body").style.backgroundImage = 'url(https://source.unsplash.com/1600x900/?'+cityname+')';
                     })
             })
 
