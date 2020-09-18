@@ -171,6 +171,16 @@
                         {feels_like.push(response.data["daily"][i]["feels_like"]["day"])
                             document.getElementById("feels_like-" + i).innerHTML = feels_like[i]
                         }
+                        let temp_min=[];
+                        for (let i=0; i<numberDays; i++)
+                        {temp_min.push(response.data["daily"][i]["temp"]["min"])
+                            document.getElementById("temp_min-" + i).innerHTML = temp_min[i]
+                        }
+                        let temp_max=[];
+                        for (let i=0; i<numberDays; i++)
+                        {temp_max.push(response.data["daily"][i]["temp"]["max"])
+                            document.getElementById("temp_max-" + i).innerHTML = temp_max[i]
+                        }
 
                     })
             })
