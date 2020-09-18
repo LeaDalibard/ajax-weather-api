@@ -5,8 +5,23 @@ body {
     padding: 20px;
     background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
     background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-    background-attachment: fixed
+    background-attachment: fixed;
+    color: whitesmoke;
+    font-size: 1.2rem;
 
+}
+h1{
+    font-size: 4rem;
+}
+h2{
+    font-size: 2.5rem;
+}
+h3{
+    font-size: 1.3rem;
+}
+
+h1,h2{
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 300px) {
@@ -24,6 +39,7 @@ body {
         width: 45%;
         margin: 15px;
         background-color: #F2F2F2;
+        color: #444444;
         padding: 15px;
         word-wrap: break-word;
     }
@@ -33,6 +49,7 @@ body {
         margin-top: 20px;
         margin-bottom: 20px;
         background-color: #F2F2F2;
+        color: #444444;
         padding: 15px;
 
     }
@@ -68,6 +85,7 @@ body {
     div.medium {
         width: 24%;
         background-color: #F2F2F2;
+        color: #444444;
         padding: 15px;
     }
     div.main {
@@ -76,9 +94,11 @@ body {
         margin-top: 20px;
         margin-bottom: 20px;
         background-color: #F2F2F2;
+        color: #444444;
         padding: 15px;
 
     }
+
     .main div {
         page-break-inside: avoid;
         font-size: 15px;
@@ -91,15 +111,6 @@ body {
         display: block;
         word-wrap: break-word
     }
-    .main div.left {
-        float: left;
-        width: 45%;
-        display: inline;
-    }
-    .main div.right {
-        float: right;
-        width: 45%;
-        display: inline;
-    }
+
 
 }
